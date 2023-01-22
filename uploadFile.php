@@ -17,6 +17,7 @@
             }
 }
 ?>
+
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -60,7 +61,7 @@ if ($uploadOk == 0) {
       . $_FILES["fileToUpload"]["name"] . "',eventAudience ='"
       . $delimitedEventAudience . "' ,eventLocation ='"
       . $_POST["eventLocation"] .  "'  ,eventUrl ='"
-      . $_POST["eventUrl"] ."'" ); //,sysFilename ='"
+      . $_POST["eventUrl"] ."'" );
 
       echo "Event successfully created.";
       ?>
@@ -78,7 +79,6 @@ if ($uploadOk == 0) {
       $eventLocation = $_POST["eventLocation"];
       $eventUrl = $_POST["eventUrl"];
       $eventDescription = $_POST["eventDescription"];
-
       $eventDateTimeStart = date("Y-m-d H:m", strtotime($_POST["eventDateTimeStart"]));
       $eventDateTimeEnd = date("Y-m-d H:m", strtotime($_POST["eventDateTimeEnd"]));
 
