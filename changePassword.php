@@ -32,7 +32,7 @@ if(isset($_POST['submit'])) {
   	. $newPassword . "' WHERE username ='". $username ."'");
     echo "Password Changed Successfully
           <br><br>
-              <a href='https://web.ics.purdue.edu/~appletoj/BDPA/login.php' target='_blank'>Back to Login</a>";
+              <a href='https://web.ics.purdue.edu/~somm/login.php' target='_blank'>Back to Login</a>";
       } else{
     echo "Please confirm New password is not the same as old password.";
     print "<br><br>";

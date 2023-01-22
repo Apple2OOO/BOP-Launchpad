@@ -36,7 +36,7 @@
             {
               if(!isset($_SESSION['siteAdmin']))
                   {
-                    header('location:https://web.ics.purdue.edu/~appletoj/BDPA/accessDenied.php');
+                    header('location:https://web.ics.purdue.edu/~somm/accessDenied.php');
                     //session_destroy();
                   }
                  if (isset($_POST['read']))

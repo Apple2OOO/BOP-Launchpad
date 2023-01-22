@@ -25,7 +25,7 @@ include("connect.php");
                    //$result = mysqli_query($conn, $sql);
           echo("Event successfully deleted.");
           print "<br>
-            <a href='https://web.ics.purdue.edu/~appletoj/BDPA/deleteEvents.php'>Delete Another Event</a>
+            <a href='https://web.ics.purdue.edu/~somm/deleteEvents.php'>Delete Another Event</a>
             <br>
             <br>
             <a href='javascript:window.close();'>Back to Main Page</a>

@@ -36,7 +36,7 @@
             {
               if(!isset($_SESSION['siteAdmin']))
                   {
-                    header('location:https://web.ics.purdue.edu/~appletoj/BDPA/accessDenied.php');
+                    header('location:https://web.ics.purdue.edu/~somm/accessDenied.php');
                     //session_destroy();
                   }
                  if (isset($_POST['read']))
@@ -55,13 +55,13 @@
 </head>
 <body>
   <h3>
-    <a href="https://web.ics.purdue.edu/~appletoj/BDPA/uploadUsers.php" target="_blank">Bulk Add Users</a>
+    <a href="https://web.ics.purdue.edu/~somm/uploadUsers.php" target="_blank">Bulk Add Users</a>
     <br>
     <br>
-    <a href="https://web.ics.purdue.edu/~appletoj/BDPA/UploadFiles.php" target="_blank">Upload Event</a>
+    <a href="https://web.ics.purdue.edu/~somm/UploadFiles.php" target="_blank">Upload Event</a>
     <br>
     <br>
-    <a href="https://web.ics.purdue.edu/~appletoj/BDPA/frmEditEvents.php" target="_blank">Modify and Delete Events</a>
+    <a href="https://web.ics.purdue.edu/~somm/frmEditEvents.php" target="_blank">Modify and Delete Events</a>
   </h3>
 <br><br><br>
   <a href="javascript:window.close();">Back to Main Page</a>

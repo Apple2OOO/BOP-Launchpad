@@ -50,7 +50,7 @@
 <html>
 <body>-->
 <h1 style="font-family: Monospace; text-align:center; color:GoldenRod" id="Name" >Business Opportunity Program Launchpad</h1>
-<right><h5 style="font-family: Monospace; text-align:right; color:Black"><a href="https://web.ics.purdue.edu/~appletoj/BDPA/logout.php">Log Out</a></h5>
+<right><h5 style="font-family: Monospace; text-align:right; color:Black"><a href="https://web.ics.purdue.edu/~somm/logout.php">Log Out</a></h5>
 
 <title>BOP Launchpad</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,9 +73,9 @@
     <h2 style="color:gray"><p style="text-align:center">Welcome To The Launchpad</p></h2>
     <p style="color:black">Welcome to the Business Opportunity Program Launchpad. Click the tab above that corresponds to your class to see professional development opportunties available to you now.</p>
     <p style="text-align:center">
-      <!--<a href="https://web.ics.purdue.edu/~appletoj/BDPA/formChangePassword.php" target="_blank">Change Password</a>
+      <!--<a href="https://web.ics.purdue.edu/~somm/formChangePassword.php" target="_blank">Change Password</a>
        |-->
-      <a href="https://web.ics.purdue.edu/~appletoj/BDPA/siteAdmin.php" target="_blank">Site Administration</a>
+      <a href="https://web.ics.purdue.edu/~somm/siteAdmin.php" target="_blank">Site Administration</a>
     </p>
 
   </div>

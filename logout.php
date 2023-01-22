@@ -31,6 +31,6 @@ $_SESSION['loggedin'] = NULL;
 <br>
 <br>
 <br>
-    <a href="https://web.ics.purdue.edu/~appletoj/BDPA/login.php">Back to Login</a>
+    <a href="https://web.ics.purdue.edu/~somm/login.php">Back to Login</a>
 
 </html>

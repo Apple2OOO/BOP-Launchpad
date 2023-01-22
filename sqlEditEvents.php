@@ -72,7 +72,7 @@ print "<br><br><br>eventDateTimeStart";
           <h1> Event <i>$eventName</i> successfully deleted.</h1>
           <br>
           <br>
-          <a href='https://web.ics.purdue.edu/~appletoj/BDPA/frmEditEvents.php'>Delete Another Event</a>
+          <a href='https://web.ics.purdue.edu/~somm/frmEditEvents.php'>Delete Another Event</a>
           <br>
           <br>
           <a href='javascript:window.close();'>Close Window</a>
@@ -92,7 +92,7 @@ print "<br><br><br>eventDateTimeStart";
           <h1> Event <i>$eventName</i> successfully updated.</h1>
           <br>
           <br>
-          <a href='https://web.ics.purdue.edu/~appletoj/BDPA/frmEditEvents.php'>Update Another Event</a>
+          <a href='https://web.ics.purdue.edu/~somm/frmEditEvents.php'>Update Another Event</a>
           <br>
           <br>
           <a href='javascript:window.close();'>Close Window</a>
@@ -114,7 +114,7 @@ print "<br><br><br>eventDateTimeStart";
         . $eventID ."' ");
            echo("Event successfully deleted.");
            print "<br>
-             <a href='https://web.ics.purdue.edu/~appletoj/BDPA/frmEditEvents.php'>Delete Another Event</a>
+             <a href='https://web.ics.purdue.edu/~somm/frmEditEvents.php'>Delete Another Event</a>
              <br>
              <br>
              <a href='javascript:window.close();'>Back to Main Page</a>
