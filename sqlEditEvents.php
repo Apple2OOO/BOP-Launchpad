@@ -68,7 +68,8 @@ print "<br><br><br>eventDateTimeStart";
     if (isset($_POST['deleteEvent'])) {
         $sql = mysqli_query($conn,  "DELETE FROM Files WHERE eventID='"
         . $eventID ."' ");
-        print "
+        header('location:https://web.ics.purdue.edu/~somm/frmEditEvents.php');
+       /* print "
           <h1> Event <i>$eventName</i> successfully deleted.</h1>
           <br>
           <br>
@@ -76,7 +77,7 @@ print "<br><br><br>eventDateTimeStart";
           <br>
           <br>
           <a href='javascript:window.close();'>Close Window</a>
-          <br>";
+          <br>";*/
 
     } else if (isset($_POST['updateEvent'])) {
         $sql = mysqli_query($conn,  "UPDATE Files SET eventName='"

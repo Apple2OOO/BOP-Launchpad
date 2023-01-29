@@ -72,7 +72,10 @@
 
     print "<table width=100% border=1>";
     print "<tr><th>Delete Event</th><th>Event</th><th>Start Date</th><th>End Date</th><th>Audience</th><th>Location</th><th>URL</th><th>Flyer</th><th>Description</th>";
-
+    
+    /*echo  "<form action='sqlEditEvents.php' method='post' enctype='multipart/form-data'
+    onSubmit=\"if(!confirm('Are you sure you want to delete/edit $eventName?')){return false;}\">";
+    print "<input type='submit' name='updateEvent' id='submitUpdate' value='Update Event'>";*/
   do {
     $eventAudience = $row['eventAudience'];
     $eventDateTimeStart = $row['eventDateTimeStart'];
@@ -94,9 +97,10 @@
     ?>
     <td>
         <input type='submit' name='deleteEvent' id='submitDelete' value='Delete Event'>
+        <!--<input type="checkbox" name="deleteEvent[]" /> Delete Event-->
         <br>
         <br>
-        <input type='submit' name='updateEvent' id='submitUpdate' value='Update Event'>
+        <input type='submit' name='updateEvent' id='submitUpdate' value='Update All Events'>
         <br>
         <br>
         <br>
