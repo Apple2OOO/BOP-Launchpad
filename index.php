@@ -126,7 +126,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-          <h2><b>$eventName</b><br>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h2>
+        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -192,7 +192,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-          <h2><b>$eventName</b><br>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h2>
+        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -258,7 +258,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-          <h2><b>$eventName</b><br>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h2>
+        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -324,7 +324,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-          <h2><b>$eventName</b><br>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h2>
+        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -390,7 +390,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-          <h2><b>$eventName</b><br>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h2>
+          <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -417,6 +417,15 @@
 //document.write("This page was last modified on: " + document.lastModified +"");
 </SCRIPT>-->
 <script language="Javascript">
+  function refreshTab(tabName) {
+    // Code to refresh the contents of the tab
+    // Example: 
+    fetch('/tabs/'+tabName)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(tabName).innerHTML = data;
+        });
+}
 function openTab(evt, TabName) {
   var i, x, tablinks;
   x = document.getElementsByClassName("Tab");
@@ -429,6 +438,7 @@ function openTab(evt, TabName) {
   }
   document.getElementById(TabName).style.display = "block";
   evt.currentTarget.className += " w3-black";
+  refreshTab(tabName);
 }
     document.getElementById("defaultOpen").click();
 </script>

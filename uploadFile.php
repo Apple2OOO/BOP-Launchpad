@@ -69,7 +69,7 @@ if ($uploadOk == 0) {
       date_default_timezone_set('America/New_York');
       if(isset($_POST['createCalendarInvite'])){
 
-      $to = "appletoj@purdue.edu";
+      $to = "somm@purdue.edu";
       $subject = "LaunchpadEvent";
 
       $eventName = $_POST["eventName"];
@@ -79,8 +79,15 @@ if ($uploadOk == 0) {
       $eventLocation = $_POST["eventLocation"];
       $eventUrl = $_POST["eventUrl"];
       $eventDescription = $_POST["eventDescription"];
-      $eventDateTimeStart = date("Y-m-d H:m", strtotime($_POST["eventDateTimeStart"]));
-      $eventDateTimeEnd = date("Y-m-d H:m", strtotime($_POST["eventDateTimeEnd"]));
+      $eventDateTimeStart = date("Y-m-d H:i", strtotime($_POST["eventDateTimeStart"]));
+      $eventDateTimeEnd = date("Y-m-d H:i", strtotime($_POST["eventDateTimeEnd"]));
+
+
+        //echo date("Y-m-d H:i", strtotime($_POST["eventDateTimeEnd"]));
+
+        //echo $eventDateTimeStart;
+        //echo $eventDateTimeEnd;
+
 
       $message =  "
         Event Name: | $eventName|
