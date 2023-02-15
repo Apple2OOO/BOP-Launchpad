@@ -27,11 +27,18 @@
 session_start();
 include("connect.php");
 
+//if(isset($_POST['login'])) {
+//	$sql = mysqli_query($conn,
+//	"SELECT * FROM Users WHERE substring_index(username,'@',1) ='"
+//	. $_POST["username"] . "' AND
+//	password='" . $_POST["pwd"] . "' ");
+
 if(isset($_POST['login'])) {
 	$sql = mysqli_query($conn,
 	"SELECT * FROM Users WHERE substring_index(username,'@',1) ='"
 	. $_POST["username"] . "' AND
-	password='" . $_POST["pwd"] . "' ");
+	(password='" . $_POST["pwd"] . "' OR
+	password=SUBSTR('" . $_POST["pwd"] . "', 3))");
 
 	$num = mysqli_num_rows($sql);
 
@@ -44,7 +51,8 @@ if(isset($_POST['login'])) {
 			$sql = mysqli_query($conn,
 			"SELECT * FROM PrivilegedUsers WHERE substring_index(username,'@',1) ='"
 			. $_POST["username"] . "' AND
-			password='" . $_POST["pwd"] . "' ");
+			(password='" . $_POST["pwd"] . "' OR
+			password=SUBSTR('" . $_POST["pwd"] . "', 3))");
 
 			$num = mysqli_num_rows($sql);
 
