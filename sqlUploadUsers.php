@@ -1,22 +1,21 @@
 <?php
  session_start();
+ include("connect.php");
+ if(!isset($_POST['read']))
+{
     if (!isset($_SESSION['loggedin']))
         {
                  header('Location: login.php');
             }
         else
             {
-              if(!isset($_SESSION['siteAdmin']))
-                  {
-                    header('location:https://web.ics.purdue.edu/~somm/accessDenied.php');
-                    //session_destroy();
-                  }
                  if (isset($_POST['read']))
                      {
-                         header('location:https://www.google.com/');
+                         header('location:https://www.geeksforgeeks.org/about/');
                          session_destroy();
                      }
             }
+}
 ?>
 <?php
 session_start();

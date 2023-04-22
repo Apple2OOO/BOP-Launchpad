@@ -2,23 +2,22 @@
 <html lang="en">
 <?php
  session_start();
+ include("connect.php");
+ if(!isset($_POST['read']))
+{
     if (!isset($_SESSION['loggedin']))
         {
                  header('Location: login.php');
             }
         else
             {
-              if(!isset($_SESSION['siteAdmin']))
-                  {
-                    header('location:https://web.ics.purdue.edu/~somm/accessDenied.php');
-                    //session_destroy();
-                  }
                  if (isset($_POST['read']))
                      {
-                         header('location:https://www.google.com/');
+                         header('location:https://www.geeksforgeeks.org/about/');
                          session_destroy();
                      }
             }
+}
 ?>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">

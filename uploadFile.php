@@ -1,29 +1,27 @@
 <?php
  session_start();
+ include("connect.php");
+ if(!isset($_POST['read']))
+{
     if (!isset($_SESSION['loggedin']))
         {
                  header('Location: login.php');
             }
         else
             {
-              if(!isset($_SESSION['siteAdmin']))
-                  {
-                    header('location:https://web.ics.purdue.edu/~somm/accessDenied.php');
-                    //session_destroy();
-                  }
                  if (isset($_POST['read']))
                      {
-                         header('location:https://www.google.com/');
+                         header('location:https://www.geeksforgeeks.org/about/');
                          session_destroy();
                      }
             }
+}
 ?>
 
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-ini_set('post_max_size',"20M");
 include("connect.php");
 //$target_dir = "uploads/";
 $target_dir = "Uploads/";
@@ -39,6 +37,13 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
+    //  $sql = mysqli_query($conn,
+    //  "SELECT * FROM Users WHERE username='"
+    //  . $_POST["username"] . "' AND
+    //  password='" . $_POST["pwd"] . "' ");
+//ßecho $_POST["filename"]
+    //  session_start();
+//      $sql = mysqli_query($conn, "INSERT INTO Files SET userFilename='fn71',fileDescription='fd17'"); /*"INSERT INTO Files SET userFilename='"
   // Delimit eventAudience Array
   $arrEventaudience = $_POST['eventAudience'];
   if (count($arrEventaudience) == 1) {
@@ -70,7 +75,7 @@ if ($uploadOk == 0) {
       $eventName = $_POST["eventName"];
       $eventDateTimeStart = $_POST["eventDateTimeStart"];
       $eventDateTimeEnd = $_POST["eventDateTimeEnd"];
-      $eventAudience =  $delimitedEventAudience;
+      $eventAudience =  $delimitedEventAudience;//"Seniors";
       $eventLocation = $_POST["eventLocation"];
       $eventUrl = $_POST["eventUrl"];
       $eventDescription = $_POST["eventDescription"];

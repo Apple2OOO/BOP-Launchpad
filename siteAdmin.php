@@ -41,7 +41,7 @@
                   }
                  if (isset($_POST['read']))
                      {
-                         header('location:https://www.google.com/');
+                         header('location:https://www.geeksforgeeks.org/about/');
                          session_destroy();
                      }
             }
