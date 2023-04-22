@@ -11,7 +11,7 @@
             {
                  if (isset($_POST['read']))
                      {
-                         header('location:https://www.geeksforgeeks.org/about/');
+                         header('location:https://www.google.com/');
                          session_destroy();
                      }
             }
@@ -25,7 +25,7 @@
     font-family:"Helvetica";
     color: black;
  }
- h1, h2, h3, h4
+ h1:target, h2, h3, h4
  {
    font-family:"Trebuchet MS";
  }
@@ -45,14 +45,11 @@
   }
 </style>
 
-<!--</body>
-<</html>
-<html>
-<body>-->
 <h1 style="font-family: Monospace; text-align:center; color:GoldenRod" id="Name" >Business Opportunity Program Launchpad</h1>
 <right><h5 style="font-family: Monospace; text-align:right; color:Black"><a href="https://web.ics.purdue.edu/~somm/logout.php">Log Out</a></h5>
 
 <title>BOP Launchpad</title>
+<h5>Designed by Josh Appleton, BOP '19</h5>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
@@ -74,7 +71,7 @@
     <p style="color:black">Welcome to the Business Opportunity Program Launchpad. Click the tab above that corresponds to your class to see professional development opportunties available to you now.</p>
     <p style="text-align:center">
       <!--<a href="https://web.ics.purdue.edu/~somm/formChangePassword.php" target="_blank">Change Password</a>
-       |-->
+       |--> <!-- [Josh]: "Leave this commented out. Passwords should not be able to be changed." -->
       <a href="https://web.ics.purdue.edu/~somm/siteAdmin.php" target="_blank">Site Administration</a>
     </p>
 
@@ -87,15 +84,35 @@
         . $_POST["username"] . "' AND
         password='" . $_POST["pwd"] . "' ");
             ?>
-            <!--<p style="color:black">Ambitious and ggg creative business student at Purdue University with ample experience in a variety of leadership positions. Recognized for excellent organization, leadership, and efficiency. Admirable teamwork, leadership, and communication skills.</p>
-        -->
+
         <?php
         $sql = mysqli_query($conn,
-        "SELECT eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
           FROM (select * from `Files`WHERE
                 (eventAudience LIKE'%All Members%')
                 ORDER BY eventDateTimeStart ASC) as s1
-          WHERE eventDateTimeStart >= CURDATE()");
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
+
+
+        if ($row = mysqli_fetch_array($sql)) {
+          print "<ul style:'list-style-type:square;'>";
+        do {
+          $eventName = $row['eventName'];
+          $eventDateStart = $row['eventDateStart'];
+          $eventID = $row['eventID'];
+          
+          print "<li>" .$eventName. ": ". $eventDateStart."</li>";
+        } while ($row = mysqli_fetch_array($sql));
+          //print "</table>\n";
+          print "</ul>";
+        } 
+
+$sql = mysqli_query($conn,
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+          FROM (select * from `Files`WHERE
+                (eventAudience LIKE'%All Members%')
+                ORDER BY eventDateTimeStart ASC) as s1
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
 
         if ($row = mysqli_fetch_array($sql)) {
           print "<ul style:'list-style-type:square;'>";
@@ -109,6 +126,7 @@
           $eventDescription = $row['eventDescription'];
           $eventLocation = $row['eventLocation'];
           $eventUrl = $row['eventUrl'];
+          $eventID = $row['eventID'];
 
 
           $arrEventAudience = explode(',', $row['eventAudience']);
@@ -126,7 +144,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
+        <h1 id=#".$eventID."><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -153,16 +171,32 @@
         . $_POST["username"] . "' AND
         password='" . $_POST["pwd"] . "' ");
             ?>
-            <!--<p style="color:black">Ambitious and ggg creative business student at Purdue University with ample experience in a variety of leadership positions. Recognized for excellent organization, leadership, and efficiency. Admirable teamwork, leadership, and communication skills.</p>
-        -->
+
         <?php
         $sql = mysqli_query($conn,
-        "SELECT eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
           FROM (select * from `Files`WHERE
                 (eventAudience LIKE'%Freshmen%' OR eventAudience LIKE'%All Members%')
                 ORDER BY eventDateTimeStart ASC) as s1
-          WHERE eventDateTimeStart >= CURDATE()");
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
 
+        if ($row = mysqli_fetch_array($sql)) {
+          print "<ul style:'list-style-type:square;'>";
+        do {
+          $eventName = $row['eventName'];
+          $eventDateStart = $row['eventDateStart'];
+          print "<li>" . $eventName .": ". $eventDateStart ."</li>";
+        } while ($row = mysqli_fetch_array($sql));
+          //print "</table>\n";
+          print "</ul>";
+        } 
+
+$sql = mysqli_query($conn,
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+          FROM (select * from `Files`WHERE
+                (eventAudience LIKE'%Freshmen%' OR eventAudience LIKE'%All Members%')
+                ORDER BY eventDateTimeStart ASC) as s1
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
         if ($row = mysqli_fetch_array($sql)) {
           print "<ul style:'list-style-type:square;'>";
         do {
@@ -175,6 +209,7 @@
           $eventDescription = $row['eventDescription'];
           $eventLocation = $row['eventLocation'];
           $eventUrl = $row['eventUrl'];
+          $eventID = $row['eventID'];
 
 
           $arrEventAudience = explode(',', $row['eventAudience']);
@@ -192,7 +227,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
+        <h1 id=#".$eventID."><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -219,15 +254,32 @@
         . $_POST["username"] . "' AND
         password='" . $_POST["pwd"] . "' ");
             ?>
-            <!--<p style="color:black">Ambitious and ggg creative business student at Purdue University with ample experience in a variety of leadership positions. Recognized for excellent organization, leadership, and efficiency. Admirable teamwork, leadership, and communication skills.</p>
-        -->
+
         <?php
         $sql = mysqli_query($conn,
-        "SELECT eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
           FROM (select * from `Files`WHERE
                 (eventAudience LIKE'%Sophomores%' OR eventAudience LIKE'%All Members%')
                 ORDER BY eventDateTimeStart ASC) as s1
-          WHERE eventDateTimeStart >= CURDATE()");
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
+
+        if ($row = mysqli_fetch_array($sql)) {
+          print "<ul style:'list-style-type:square;'>";
+        do {
+          $eventName = $row['eventName'];
+          $eventDateStart = $row['eventDateStart'];
+          print "<li>" . $eventName .": ". $eventDateStart ."</li>";
+        } while ($row = mysqli_fetch_array($sql));
+          //print "</table>\n";
+          print "</ul>";
+        } 
+
+$sql = mysqli_query($conn,
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+          FROM (select * from `Files`WHERE
+                (eventAudience LIKE'%Sophomores%' OR eventAudience LIKE'%All Members%')
+                ORDER BY eventDateTimeStart ASC) as s1
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
 
         if ($row = mysqli_fetch_array($sql)) {
           print "<ul style:'list-style-type:square;'>";
@@ -241,6 +293,7 @@
           $eventDescription = $row['eventDescription'];
           $eventLocation = $row['eventLocation'];
           $eventUrl = $row['eventUrl'];
+          $eventID = $row['eventID'];
 
 
           $arrEventAudience = explode(',', $row['eventAudience']);
@@ -258,7 +311,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
+        <h1 id=#".$eventID."><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -285,15 +338,32 @@
         . $_POST["username"] . "' AND
         password='" . $_POST["pwd"] . "' ");
             ?>
-            <!--<p style="color:black">Ambitious and ggg creative business student at Purdue University with ample experience in a variety of leadership positions. Recognized for excellent organization, leadership, and efficiency. Admirable teamwork, leadership, and communication skills.</p>
-        -->
+
         <?php
         $sql = mysqli_query($conn,
-        "SELECT eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
           FROM (select * from `Files`WHERE
                 (eventAudience LIKE'%Juniors%' OR eventAudience LIKE'%All Members%')
                 ORDER BY eventDateTimeStart ASC) as s1
-          WHERE eventDateTimeStart >= CURDATE()");
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
+
+        if ($row = mysqli_fetch_array($sql)) {
+          print "<ul style:'list-style-type:square;'>";
+        do {
+          $eventName = $row['eventName'];
+          $eventDateStart = $row['eventDateStart'];
+          print "<li>" . $eventName .": ". $eventDateStart ."</li>";
+        } while ($row = mysqli_fetch_array($sql));
+          //print "</table>\n";
+          print "</ul>";
+        } 
+
+$sql = mysqli_query($conn,
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+          FROM (select * from `Files`WHERE
+                (eventAudience LIKE'%Juniors%' OR eventAudience LIKE'%All Members%')
+                ORDER BY eventDateTimeStart ASC) as s1
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
 
         if ($row = mysqli_fetch_array($sql)) {
           print "<ul style:'list-style-type:square;'>";
@@ -307,6 +377,7 @@
           $eventDescription = $row['eventDescription'];
           $eventLocation = $row['eventLocation'];
           $eventUrl = $row['eventUrl'];
+          $eventID = $row['eventID'];
 
 
           $arrEventAudience = explode(',', $row['eventAudience']);
@@ -324,7 +395,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-        <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
+        <h1 id=#".$eventID."><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
@@ -351,15 +422,32 @@
         . $_POST["username"] . "' AND
         password='" . $_POST["pwd"] . "' ");
             ?>
-            <!--<p style="color:black">Ambitious and ggg creative business student at Purdue University with ample experience in a variety of leadership positions. Recognized for excellent organization, leadership, and efficiency. Admirable teamwork, leadership, and communication skills.</p>
-        -->
+
         <?php
         $sql = mysqli_query($conn,
-        "SELECT eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
           FROM (select * from `Files`WHERE
                 (eventAudience LIKE'%Seniors%' OR eventAudience LIKE'%All Members%')
                 ORDER BY eventDateTimeStart ASC) as s1
-          WHERE eventDateTimeStart >= CURDATE()");
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
+
+        if ($row = mysqli_fetch_array($sql)) {
+          print "<ul style:'list-style-type:square;'>";
+        do {
+          $eventName = $row['eventName'];
+          $eventDateStart = $row['eventDateStart'];
+          print "<li>" . $eventName .": ". $eventDateStart ."</li>";
+        } while ($row = mysqli_fetch_array($sql));
+          //print "</table>\n";
+          print "</ul>";
+        } 
+
+$sql = mysqli_query($conn,
+        "SELECT eventID, eventName, DATE_FORMAT(eventDateTimeStart,'%M %D, %Y') as eventDateStart, DATE_FORMAT(eventDateTimeStart, '%h:%i %p') as eventTimeStart, DATE_FORMAT(eventDateTimeEnd,'%M %D, %Y') as eventDateEnd, DATE_FORMAT(eventDateTimeEnd, '%h:%i %p') as eventTimeEnd, sysFilename, eventDescription, eventAudience, eventLocation, eventUrl
+          FROM (select * from `Files`WHERE
+                (eventAudience LIKE'%Seniors%' OR eventAudience LIKE'%All Members%')
+                ORDER BY eventDateTimeStart ASC) as s1
+          WHERE eventDateTimeEnd >= CURDATE() - 7");
 
         if ($row = mysqli_fetch_array($sql)) {
           print "<ul style:'list-style-type:square;'>";
@@ -373,6 +461,7 @@
           $eventDescription = $row['eventDescription'];
           $eventLocation = $row['eventLocation'];
           $eventUrl = $row['eventUrl'];
+          $eventID = $row['eventID'];
 
 
           $arrEventAudience = explode(',', $row['eventAudience']);
@@ -390,7 +479,7 @@
             $eventUrl = 'http://' . $eventUrl;
           }
         print "
-          <h1><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
+          <h1 id=#".$eventID."><b>$eventName</b></h1><h4>" . $eventDateStart . " at ".$eventTimeStart. " to " .$eventDateEnd . " at " . $eventTimeEnd ."</h4>
           <img src='Uploads/".$sysFilename."' onerror='this.onerror=null; src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png\"'>
           <p><b>Open To:</b> " . $eventAudience . "</p>
           <p><b>Location: </b> $eventLocation</p>
