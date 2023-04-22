@@ -62,7 +62,7 @@
   Event Location:
   <input type="text" id="eventLocation" name="eventLocation">
   <br>
-  Event Description:
+  Event Description (530 Characters Max):
   <textarea name="eventDescription" id="eventDescription" style="width:500px;height:150px;"></textarea>
   <br>
   URL:
