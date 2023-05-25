@@ -1,4 +1,4 @@
-# BOP-Launchpad
+# BOP Launchpad
 
 This is a website designed as a private job/event board for college students in a business program. It allows the program director and sponsor companies to post job and networking opportunities exclusively for a specific batch of students. Students can access the site using a unique username and password.
 
